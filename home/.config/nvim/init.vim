@@ -1,4 +1,7 @@
 " Bootstrapping {{{
+" Use system-wide Python in Neovim
+let g:python_host_prog = '/usr/bin/python2'
+
 " Detect OSX / Linux and set repositories location
 if has("unix")
 	let s:uname = substitute(system("uname -s"), '\n', '', '')
