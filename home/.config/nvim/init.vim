@@ -1,6 +1,6 @@
 " Bootstrapping {{{
 " Use system-wide Python in Neovim
-let g:python_host_prog = '/usr/bin/python2'
+let g:python_host_prog = '/usr/local/bin/python2'
 
 " Detect OSX / Linux and set repositories location
 if has("unix")
@@ -21,6 +21,9 @@ endif
 
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
+
+" Fix some issues with tmux
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " The best linter / syntax checker for vim
 Plug 'scrooloose/syntastic'
@@ -69,6 +72,27 @@ Plug 'hynek/vim-python-pep8-indent'
 " tmux syntax hilighting
 Plug 'tmux-plugins/vim-tmux'
 
+" Updated PHP omnifunc
+Plug 'shawncplus/phpcomplete.vim'
+
+" Make editing of salt files nicer
+Plug 'saltstack/salt-vim'
+
+" Javascript syntax and indentation
+Plug 'pangloss/vim-javascript'
+
+" JSX syntax hilighting / indentation
+Plug 'mxw/vim-jsx'
+
+" Use local eslint over globally installed package
+Plug 'pmsorhaindo/syntastic-local-eslint.vim'
+
+" Blade (Laravel templating) syntax highlighting / indentation
+Plug 'jwalton512/vim-blade'
+
+" LESS syntax hilighting / indentation
+Plug 'groenewege/vim-less'
+
 call plug#end()
 " }}}
 
@@ -84,9 +108,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 " }}}
 
 " Visual Settings {{{
-" Redraw only when we need to
-set lazyredraw
-
 " Set the title of the window to reflect file being edited
 set title
 set titlestring=VIM:\ %F
@@ -229,7 +250,18 @@ let g:tagbar_type_go = {
 \ }
 
 " Use the silver searcher to generate our file list, and pymatcher for search
-let g:ctrlp_user_command = 'ag %s -l -i --nocolor --nogroup --hidden  -g ""'
+if executable('ag')
+	let g:ctrlp_user_command = 'ag %s -l -i --nocolor --nogroup --hidden
+	    \ --ignore .git
+	    \ --ignore .svn
+	    \ --ignore .hg
+	    \ --ignore .DS_Store
+	    \ --ignore "*.min.js"
+	    \ --ignore "*.min.map"
+	    \ --ignore "**/*.pyc"
+	    \ -g ""'
+	let g:ctrlp_use_caching = 0
+endif
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Enable airline (and stop it from erroring on PHP docblocks)
@@ -246,7 +278,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_aggregate_errors = 1
 
 " PHP-specific Syntastic settings
-let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
+" JS-specific Syntastic settings
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Set PHPCS ruleset for Cuda, or default to PSR-2
 if getcwd() =~ '^' . s:repo_dir . '/cuda'
