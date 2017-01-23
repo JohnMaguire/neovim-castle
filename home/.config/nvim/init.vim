@@ -278,17 +278,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_aggregate_errors = 1
 
 " PHP-specific Syntastic settings
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd', 'phplint']
 
 " JS-specific Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
 
-" Set PHPCS ruleset for Cuda, or default to PSR-2
-if getcwd() =~ '^' . s:repo_dir . '/cuda'
-	let g:syntastic_php_phpcs_args='--report=csv --standard=' . s:repo_dir . '/cuda/commonstandards/PHP_CodeSniffer/Barracuda/ruleset.xml'
-else
-	let g:syntastic_php_phpcs_args='--report=csv --standard=PSR2'
-endif
+let g:syntastic_php_phpcs_args='--report=csv --standard=PSR2'
 " }}}
 
 " Strip trailing whitespace on save
