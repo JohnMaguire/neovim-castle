@@ -191,6 +191,9 @@ inoremap jk <Esc>
 " Move vertically by visual line (fix line wrapping)
 nnoremap j gj
 nnoremap k gk
+
+" Don't yank to buffer when pasting over text
+xnoremap p "_dP
 " }}}
 
 " Plugin Configuration {{{
