@@ -57,11 +57,8 @@ Plug 'Valloric/YouCompleteMe'
 " Silver searcher command (Ag)
 Plug 'rking/ag.vim'
 
+" Show tags in file, ordered by scope
 Plug 'majutsushi/tagbar'
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
 
 " Golang settings
 Plug 'fatih/vim-go'
@@ -200,19 +197,6 @@ xnoremap p "_dP
 " Don't open a pane on YouCompleteMe autocompletion
 autocmd CompleteDone * pclose
 
-" Let Supertab handle YCM (so UltiSnips works)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" Set UltiSnips trigger config
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Make :UltiSnipsEdit split the window
-let g:UltiSnipsEditSplit="vertical"
-
 " Enable goimports
 let g:go_fmt_command = "goimports"
 
@@ -282,11 +266,10 @@ let g:syntastic_aggregate_errors = 1
 
 " PHP-specific Syntastic settings
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd', 'phplint']
+let g:syntastic_php_phpcs_args='--report=csv --standard=PSR2'
 
 " JS-specific Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
-
-let g:syntastic_php_phpcs_args='--report=csv --standard=PSR2'
 " }}}
 
 " Strip trailing whitespace on save
