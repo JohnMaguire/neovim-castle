@@ -12,8 +12,16 @@ if has("unix")
 	endif
 endif
 
+" Install vim-plug for neovim
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo "$HOME/.config/nvim/autoload/plug.vim" --create-dirs
+    \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+" Install vim-plug for vim
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs
     \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -21,6 +29,9 @@ endif
 
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
+
+" Start with some sensible defaults
+Plug 'tpope/vim-sensible'
 
 " Fix some issues with tmux
 Plug 'tmux-plugins/vim-tmux-focus-events'
