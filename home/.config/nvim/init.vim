@@ -188,10 +188,10 @@ nnoremap <Leader>r :source $MYVIMRC<CR>
 nnoremap <Leader>a :Ag
 
 " Bind NERDTree to C-j C-j
-map <Leader>j :NERDTreeToggle<CR>
+noremap <Leader>j :NERDTreeToggle<CR>
 
 " Bind Tagbar to C-k C-k
-map <Leader>k :TagbarToggle<CR>
+noremap <Leader>k :TagbarToggle<CR>
 
 " Exit insert mode with jk
 inoremap jk <Esc>
