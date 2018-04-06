@@ -27,6 +27,50 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 " }}}
 
+" Key Bindings {{{
+" Set Leader key to comma
+let mapleader=","
+
+" Edit / reload config
+nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <Leader>rv :source $MYVIMRC<CR>
+
+" Clear search highlighting
+nnoremap <Leader><Space> :nohlsearch<CR>
+
+" Exit insert mode with jk
+inoremap jk <Esc>
+inoremap <Esc> <nop>
+inoremap <C-c> <nop>
+" }}}
+
+" Movement {{{
+" Move vertically by visual line (fix line wrapping)
+nnoremap j gj
+nnoremap k gk
+
+" Super-h and Super-l (beginning / end of line)
+nnoremap H ^
+vnoremap H ^
+nnoremap L $
+vnoremap L $
+
+" ^ and $ are no longer needed
+nnoremap ^ <nop>
+vnoremap ^ <nop>
+nnoremap $ <nop>
+vnoremap $ <nop>
+
+" Disable arrow keys
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <Up> <nop>
+noremap <Down> <nop>
+
+" Don't yank to buffer when pasting over text
+xnoremap p "_dP
+" }}}
+
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
@@ -102,106 +146,6 @@ Plug 'jwalton512/vim-blade'
 Plug 'groenewege/vim-less'
 
 call plug#end()
-" }}}
-
-" Swap, Backup, and Restore {{{
-" Move swap files out of project directory
-set directory=~/.config/nvim/swp//
-
-" Backups are for scrubs
-set nobackup
-
-" Restore place in file on open
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-" }}}
-
-" Visual Settings {{{
-" Set the title of the window to reflect file being edited
-set title
-set titlestring=VIM:\ %F
-
-" Turn on column and line numbers
-set ruler
-set number
-
-" Highlight current line
-set cursorline
-
-" Turn off end of line wrapping
-set nowrap
-
-" Add statusbar to last buffer
-set laststatus=2
-
-" Turn off bell
-set vb t_vb=
-
-" Set color scheme to Solarized Dark
-set background=dark
-colorscheme solarized
-
-" }}}
-"
-" Folding {{{
-set foldenable
-
-" Ten levels of fold shown by default
-set foldlevelstart=10
-set foldnestmax=10
-
-" Use indentation for folding by default
-set foldmethod=indent
-
-" Only look for mode lines at end of file
-set modelines=1
-" }}}
-
-" Tab Settings {{{
-" Visual spaces per tab
-set tabstop=4
-
-" Spaces inserted per tab
-set softtabstop=4
-
-" Don't expand tabs by default
-set noexpandtab
-
-" Smarter auto-indentation
-set smartindent
-set shiftwidth=4
-" }}}
-
-" Key Bindings {{{
-" Set Leader key to comma
-let mapleader=","
-
-" Use space to show/hide folds
-nnoremap <Space> za
-
-" Clear search highlighting
-nnoremap <Leader><Space> :nohlsearch<CR>
-
-" Reload config
-nnoremap <Leader>r :source $MYVIMRC<CR>
-
-" Open the silver search
-nnoremap <Leader>a :Ag
-
-" Bind NERDTree to C-j C-j
-noremap <Leader>j :NERDTreeToggle<CR>
-
-" Bind Tagbar to C-k C-k
-noremap <Leader>k :TagbarToggle<CR>
-
-" Exit insert mode with jk
-inoremap jk <Esc>
-
-" Move vertically by visual line (fix line wrapping)
-nnoremap j gj
-nnoremap k gk
-
-" Don't yank to buffer when pasting over text
-xnoremap p "_dP
 " }}}
 
 " Plugin Configuration {{{
@@ -289,6 +233,85 @@ augroup END
 
 " JS-specific Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Open the silver search
+nnoremap <Leader>a :Ag<space>
+
+" Open / close NERDTree
+noremap <Leader>j :NERDTreeToggle<CR>
+
+" Open / close Tagbar
+noremap <Leader>k :TagbarToggle<CR>
+" }}}
+
+" Tab Settings {{{
+" Visual spaces per tab
+set tabstop=4
+
+" Spaces inserted per tab
+set softtabstop=4
+
+" Don't expand tabs by default
+set noexpandtab
+
+" Smarter auto-indentation
+set smartindent
+set shiftwidth=4
+" }}}
+
+" Visual Settings {{{
+" Set the title of the window to reflect file being edited
+set title
+set titlestring=VIM:\ %F
+
+" Turn on column and line numbers
+set ruler
+set number
+
+" Highlight current line
+set cursorline
+
+" Turn off end of line wrapping
+set nowrap
+
+" Add statusbar to last buffer
+set laststatus=2
+
+" Turn off bell
+set vb t_vb=
+
+" Set color scheme to Solarized Dark
+set background=dark
+colorscheme solarized
+
+" }}}
+"
+" Folding {{{
+set foldenable
+
+" Ten levels of fold shown by default
+set foldlevelstart=10
+set foldnestmax=10
+
+" Use indentation for folding by default
+set foldmethod=indent
+
+" Only look for mode lines at end of file
+set modelines=1
+
+" Use space to show/hide folds
+nnoremap <Space> za
+" }}}
+
+" Swap, Backup, and Restore {{{
+" Move swap files out of project directory
+set directory=~/.config/nvim/swp//
+
+" Backups are for scrubs
+set nobackup
+
+" Restore place in file on open
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " }}}
 
 " Strip trailing whitespace on save
@@ -298,5 +321,5 @@ let g:syntastic_javascript_checkers = ['eslint']
 " parts of the file using Git. Many people would prefer to do this manually,
 " and plugins like ntpeters/vim-better-whitespace will do this.
 autocmd BufWritePre * :%s/\s\+$//e
-"
+
 " vim: foldmethod=marker:foldlevel=0
