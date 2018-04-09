@@ -223,14 +223,6 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd', 'phplint']
 let g:syntastic_php_phpcs_args='--report=csv --standard=PSR2'
 
-" Python-specific Syntastic settings
-" Duo ignores E501 (line too long)
-augroup DuoFlake8
-	autocmd!
-	autocmd BufEnter $HOME/src/Duo/* :let g:syntastic_python_flake8_args='--ignore=E501'
-	autocmd BufLeave $HOME/src/Duo/* :unlet g:syntastic_python_flake8_args
-augroup END
-
 " JS-specific Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
 
@@ -312,6 +304,20 @@ set nobackup
 
 " Restore place in file on open
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" }}}
+
+" Project-specific settings {{{
+" Duo ignores E501 (line too long)
+augroup DuoFlake8
+	autocmd!
+	autocmd BufEnter $HOME/src/Duo/* :let g:syntastic_python_flake8_args='--ignore=E501'
+	autocmd BufLeave $HOME/src/Duo/* :unlet g:syntastic_python_flake8_args
+augroup END
+
+" Run py.test when saving Cardinal unit tests
+augroup RunPyTestCardinal
+	autocmd! BufWritePost $HOME/src/Cardinal/**/test_*.py :!py.test
+augroup END
 " }}}
 
 " Strip trailing whitespace on save
