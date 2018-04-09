@@ -46,8 +46,8 @@ inoremap <C-c> <nop>
 
 " Movement {{{
 " Move vertically by visual line (fix line wrapping)
-nnoremap j gj
-nnoremap k gk
+noremap <expr> j v:count ? 'j' : 'gj'
+noremap <expr> k v:count ? 'k' : 'gk'
 
 " Super-h and Super-l (beginning / end of line)
 nnoremap H ^
