@@ -30,6 +30,7 @@ endif
 " Key Bindings {{{
 " Set Leader key to comma
 let mapleader=","
+let localleader="\\"
 
 " Edit / reload config
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
