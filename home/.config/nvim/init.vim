@@ -42,6 +42,9 @@ nnoremap <Leader><Space> :nohlsearch<CR>
 inoremap jk <Esc>
 inoremap <Esc> <nop>
 inoremap <C-c> <nop>
+
+" Use qq for recording and <Leader>q for playing macros
+nnoremap <Leader>q @q
 " }}}
 
 " Movement {{{
