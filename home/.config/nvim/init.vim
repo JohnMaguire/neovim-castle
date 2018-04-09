@@ -52,17 +52,13 @@ nnoremap <Leader>q @q
 noremap <expr> j v:count ? 'j' : 'gj'
 noremap <expr> k v:count ? 'k' : 'gk'
 
-" Super-h and Super-l (beginning / end of line)
-nnoremap H ^
-vnoremap H ^
-nnoremap L $
-vnoremap L $
+" Super-H and Super-L (beginning / end of line)
+noremap H ^
+noremap L $
 
 " ^ and $ are no longer needed
-nnoremap ^ <nop>
-vnoremap ^ <nop>
-nnoremap $ <nop>
-vnoremap $ <nop>
+noremap ^ <nop>
+noremap $ <nop>
 
 " Disable arrow keys
 noremap <Left> <nop>
@@ -238,7 +234,7 @@ augroup END
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Open the silver search
-nnoremap <Leader>a :Ag<space>
+nnoremap <Leader>a :Ag<Space>
 
 " Open / close NERDTree
 noremap <Leader>j :NERDTreeToggle<CR>
