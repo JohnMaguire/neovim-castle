@@ -196,16 +196,16 @@ let g:tagbar_type_go = {
 
 " Use the silver searcher to generate our file list, and pymatcher for search
 if executable('ag')
-	let g:ctrlp_user_command = 'ag %s -l -i --nocolor --nogroup --hidden
-	    \ --ignore .git
-	    \ --ignore .svn
-	    \ --ignore .hg
-	    \ --ignore .DS_Store
-	    \ --ignore "*.min.js"
-	    \ --ignore "*.min.map"
-	    \ --ignore "**/*.pyc"
-	    \ -g ""'
-	let g:ctrlp_use_caching = 0
+    let g:ctrlp_user_command = 'ag %s -l -i --nocolor --nogroup --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore "*.min.js"
+        \ --ignore "*.min.map"
+        \ --ignore "**/*.pyc"
+        \ -g ""'
+    let g:ctrlp_use_caching = 0
 endif
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
