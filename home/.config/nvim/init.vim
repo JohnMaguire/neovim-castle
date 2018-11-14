@@ -145,6 +145,9 @@ Plug 'jwalton512/vim-blade'
 " LESS syntax hilighting / indentation
 Plug 'groenewege/vim-less'
 
+" Terraform syntax highlighting / formatting
+Plug 'hashivim/vim-terraform'
+
 call plug#end()
 " }}}
 
@@ -234,6 +237,9 @@ noremap <Leader>j :NERDTreeToggle<CR>
 
 " Open / close Tagbar
 noremap <Leader>k :TagbarToggle<CR>
+
+" Terraform fmt on save
+let g:terraform_fmt_on_save = 1
 " }}}
 
 " Tab Settings {{{
