@@ -39,10 +39,8 @@ nnoremap <Leader>rv :source $MYVIMRC<CR>
 " Clear search highlighting
 nnoremap <Leader><Space> :nohlsearch<CR>
 
-" Exit insert mode with jk
+"" Exit insert mode with jk
 inoremap jk <Esc>
-inoremap <Esc> <nop>
-inoremap <C-c> <nop>
 
 " Use qq for recording and <Leader>q for playing macros
 nnoremap <Leader>q @q
