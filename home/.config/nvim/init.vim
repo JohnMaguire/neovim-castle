@@ -116,6 +116,9 @@ Plug 'majutsushi/tagbar'
 " Golang settings
 Plug 'fatih/vim-go'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+
 " Python indentation conforming to PEP-8
 Plug 'hynek/vim-python-pep8-indent'
 
@@ -191,6 +194,9 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+" Enable Rust formatting
+let g:rustfmt_autosave = 1
 
 " Use the silver searcher to generate our file list, and pymatcher for search
 if executable('ag')
@@ -279,9 +285,8 @@ set vb t_vb=
 " Set color scheme to Solarized Dark
 set background=dark
 colorscheme solarized
-
 " }}}
-"
+
 " Folding {{{
 set foldenable
 
