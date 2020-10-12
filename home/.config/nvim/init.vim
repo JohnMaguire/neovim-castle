@@ -81,6 +81,9 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " The best linter / syntax checker for vim
 Plug 'scrooloose/syntastic'
 
+" Vim wiki
+Plug 'vimwiki/vimwiki'
+
 " FS tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
@@ -254,6 +257,12 @@ noremap <Leader>k :TagbarToggle<CR>
 
 " Terraform fmt on save
 let g:terraform_fmt_on_save = 1
+
+" Setup wiki
+let wiki = {}
+let wiki.path = '~/vimwiki/'
+let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'json': 'json'}
+let g:vimwiki_list = [wiki]
 " }}}
 
 " Tab Settings {{{
