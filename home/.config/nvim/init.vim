@@ -104,8 +104,18 @@ Plug 'tpope/vim-fugitive'
 " Git markers next to line numbers
 Plug 'airblade/vim-gitgutter'
 
-" Autocompletion (requires Python 2.x support)
-Plug 'Valloric/YouCompleteMe'
+" Autocompletion (requires Python support)
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Silver searcher command (Ag)
 Plug 'rking/ag.vim'
