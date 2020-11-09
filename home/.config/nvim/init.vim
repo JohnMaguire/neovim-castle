@@ -261,7 +261,6 @@ let g:terraform_fmt_on_save = 1
 " Setup wiki
 let wiki = {}
 let wiki.path = '~/vimwiki/'
-let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'json': 'json'}
 let g:vimwiki_list = [wiki]
 " }}}
 
