@@ -338,7 +338,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 augroup DuoFlake8
 	autocmd!
 	autocmd BufEnter $HOME/src/Duo/* :let g:syntastic_python_flake8_args='--ignore=E501'
-	autocmd BufLeave $HOME/src/Duo/* :unlet g:syntastic_python_flake8_args
+	autocmd BufLeave $HOME/src/Duo/* :silent! unlet g:syntastic_python_flake8_args
 augroup END
 
 " Run py.test when saving Cardinal unit tests
