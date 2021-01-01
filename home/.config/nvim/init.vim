@@ -90,9 +90,9 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Undo history tree (trust me on this one)
 Plug 'sjl/gundo.vim'
 
-" C-p fuzzy file searching (and fast with ctrl-py-matcher!)
-Plug 'kien/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+" fzf fuzzy file searching
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Solarized color scheme
 Plug 'altercation/vim-colors-solarized'
@@ -121,7 +121,7 @@ endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Silver searcher command (Ag)
-Plug 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 
 " Show tags in file, ordered by scope
 Plug 'majutsushi/tagbar'
@@ -211,21 +211,6 @@ let g:tagbar_type_go = {
 " Enable Rust formatting
 let g:rustfmt_autosave = 1
 
-" Use the silver searcher to generate our file list, and pymatcher for search
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l -i --nocolor --nogroup --hidden
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore "*.min.js"
-        \ --ignore "*.min.map"
-        \ --ignore "**/*.pyc"
-        \ -g ""'
-    let g:ctrlp_use_caching = 0
-endif
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
 " Enable airline (and stop it from erroring on PHP docblocks)
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
@@ -246,8 +231,9 @@ let g:syntastic_php_phpcs_args='--report=csv --standard=PSR2'
 " JS-specific Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
 
-" Open the silver search
-nnoremap <Leader>a :Ag<Space>
+" Open fzf / the silver searcher
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>a :Ag<CR>
 
 " Open / close NERDTree
 noremap <Leader>j :NERDTreeToggle<CR>
