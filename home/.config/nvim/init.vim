@@ -87,8 +87,8 @@ Plug 'vimwiki/vimwiki'
 " FS tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-" Undo history tree (trust me on this one)
-Plug 'sjl/gundo.vim'
+" Undo history tree (better undo tree)
+Plug 'simnalamburt/vim-mundo'
 
 " fzf fuzzy file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -229,6 +229,8 @@ noremap <Leader>j :NERDTreeToggle<CR>
 " Open / close Tagbar
 noremap <Leader>k :TagbarToggle<CR>
 
+nnoremap <Leader>u :MundoToggle<CR>
+
 " Terraform fmt on save
 let g:terraform_fmt_on_save = 1
 
@@ -298,13 +300,24 @@ nnoremap <Space> za
 
 " Swap, Backup, and Restore {{{
 " Move swap files out of project directory
-set directory=~/.config/nvim/swp//
+set directory=~/.config/nvim/swp/
 
 " Backups are for scrubs
 set nobackup
 
 " Restore place in file on open
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Save undo tree
+set undodir=~/.config/nvim/undo
+set undofile
+
+if !isdirectory($HOME . "/.config/nvim")
+	call mkdir($HOME . "/.config/nvim")
+endif
+if !isdirectory($HOME . "/.config/nvim/undo")
+	call mkdir($HOME . "/.config/nvim/undo", "", 0700)
+endif
 " }}}
 
 " Project-specific settings {{{
