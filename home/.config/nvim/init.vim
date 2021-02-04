@@ -120,9 +120,6 @@ endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-" Silver searcher command (Ag)
-" Plug 'rking/ag.vim'
-
 " Show tags in file, ordered by scope
 Plug 'majutsushi/tagbar'
 
@@ -133,16 +130,13 @@ Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 
 " Python indentation conforming to PEP-8
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " tmux syntax hilighting
 Plug 'tmux-plugins/vim-tmux'
 
 " Updated PHP omnifunc
 Plug 'shawncplus/phpcomplete.vim'
-
-" Make editing of salt files nicer
-Plug 'saltstack/salt-vim'
 
 " Javascript syntax and indentation
 Plug 'pangloss/vim-javascript'
@@ -151,13 +145,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 " Use local eslint over globally installed package
-Plug 'pmsorhaindo/syntastic-local-eslint.vim'
-
-" Blade (Laravel templating) syntax highlighting / indentation
-Plug 'jwalton512/vim-blade'
-
-" LESS syntax hilighting / indentation
-Plug 'groenewege/vim-less'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 
 " Terraform syntax highlighting / formatting
 Plug 'hashivim/vim-terraform'
