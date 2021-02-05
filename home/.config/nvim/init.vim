@@ -129,6 +129,9 @@ Plug 'fatih/vim-go'
 " Rust
 Plug 'rust-lang/rust.vim'
 
+" TOML syntax highlighting
+Plug 'cespare/vim-toml'
+
 " Python indentation conforming to PEP-8
 Plug 'Vimjas/vim-python-pep8-indent'
 
