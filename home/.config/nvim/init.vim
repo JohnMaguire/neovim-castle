@@ -117,8 +117,11 @@ function! BuildYCM(info)
     !./install.py
   endif
 endfunction
-
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+" Gist support
+Plug 'mattn/webapi-vim'
+Plug 'mattn/vim-gist'
 
 " Show tags in file, ordered by scope
 Plug 'majutsushi/tagbar'
