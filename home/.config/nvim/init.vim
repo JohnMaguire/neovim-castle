@@ -261,14 +261,11 @@ nnoremap <Space> za
 " }}}
 
 " Swap, Backup, and Restore {{{
-" Move swap files out of project directory
-set directory=~/.config/nvim/swp/
-
 " Backups are for scrubs
 set nobackup
 
-" Restore place in file on open
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" Move swap files out of project directory
+set directory=~/.config/nvim/swp/
 
 " Save undo tree
 set undodir=~/.config/nvim/undo
@@ -277,9 +274,15 @@ set undofile
 if !isdirectory($HOME . "/.config/nvim")
 	call mkdir($HOME . "/.config/nvim")
 endif
+if !isdirectory($HOME . "/.config/nvim/swp")
+	call mkdir($HOME . "/.config/nvim/swp", "", 0700)
+endif
 if !isdirectory($HOME . "/.config/nvim/undo")
 	call mkdir($HOME . "/.config/nvim/undo", "", 0700)
 endif
+
+" Restore place in file on open
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " }}}
 
 " Project-specific settings {{{
