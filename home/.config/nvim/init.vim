@@ -97,6 +97,9 @@ Plug 'junegunn/fzf.vim'
 " Solarized color scheme
 Plug 'altercation/vim-colors-solarized'
 
+" Nord color scheme
+Plug 'arcticicestudio/nord-vim'
+
 " Airline status bar, and solarized theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -246,9 +249,8 @@ set laststatus=2
 " Turn off bell
 set vb t_vb=
 
-" Set color scheme to Solarized Dark
-set background=dark
-colorscheme solarized
+" Set color scheme to Nord
+colorscheme nord
 " }}}
 
 " Folding {{{
