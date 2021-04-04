@@ -110,17 +110,7 @@ Plug 'tpope/vim-fugitive'
 " Git markers next to line numbers
 Plug 'airblade/vim-gitgutter'
 
-" Autocompletion (requires Python support)
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-    !./install.py
-  endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 " Gist support
 Plug 'mattn/webapi-vim'
