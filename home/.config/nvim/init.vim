@@ -168,7 +168,7 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 " Enable Powerline fonts and Solarized theme (Airline)
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'nord'
 
 " Syntastic settings
 let g:syntastic_check_on_wq = 1
@@ -185,6 +185,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Open fzf / the silver searcher
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>a :Ag<CR>
+nnoremap <Leader>r :Rg<CR>
 
 " Open / close NERDTree
 noremap <Leader>j :NERDTreeToggle<CR>
@@ -241,6 +242,9 @@ set vb t_vb=
 
 " Set color scheme to Nord
 colorscheme nord
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " }}}
 
 " Folding {{{
