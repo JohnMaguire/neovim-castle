@@ -1,33 +1,20 @@
 " Bootstrapping {{{
-" Use system-wide Python in Neovim
-let g:python_host_prog = '/usr/local/bin/python2'
-
-" Detect OSX / Linux and set repositories location
-if has("unix")
-	let s:uname = substitute(system("uname -s"), '\n', '', '')
-	if s:uname == "Darwin"
-		let s:repo_dir = "/Users/jmaguire/Repositories"
-	elseif s:uname == "Linux"
-		let s:repo_dir = "/home/jmaguire/repos"
-	endif
-endif
-
 " Install vim-plug for neovim
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo "$HOME/.config/nvim/autoload/plug.vim" --create-dirs
-    \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+    silent !curl -fLo "$HOME/.config/nvim/autoload/plug.vim" --create-dirs
+      \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
 " Install vim-plug for vim
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs
-    \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+   silent !curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs
+     \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 " }}}
 
-" Key Bindings {{{
+" Key Bindings & Movement {{{
 " Set Leader key to comma
 let mapleader=","
 let localleader="\\"
@@ -44,9 +31,13 @@ inoremap jk <Esc>
 
 " Use qq for recording and <Leader>q for playing macros
 nnoremap <Leader>q @q
-" }}}
 
-" Movement {{{
+" Disable arrow keys
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <Up> <nop>
+noremap <Down> <nop>
+
 " Move vertically by visual line (fix line wrapping)
 noremap <expr> j v:count ? 'j' : 'gj'
 noremap <expr> k v:count ? 'k' : 'gk'
@@ -55,18 +46,25 @@ noremap <expr> k v:count ? 'k' : 'gk'
 noremap H ^
 noremap L $
 
-" ^ and $ are no longer needed
-noremap ^ <nop>
-noremap $ <nop>
-
-" Disable arrow keys
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap <Up> <nop>
-noremap <Down> <nop>
+" Use space to show/hide folds
+nnoremap <Space> za
 
 " Don't yank to buffer when pasting over text
 xnoremap p "_dP
+
+" Open fzf / the silver searcher
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>a :Ag<CR>
+nnoremap <Leader>r :Rg<CR>
+
+" Open / close NERDTree
+noremap <Leader>j :NERDTreeToggle<CR>
+
+" Open / close Tagbar
+noremap <Leader>k :TagbarToggle<CR>
+
+" Open / close undo tree
+nnoremap <Leader>u :MundoToggle<CR>
 " }}}
 
 " Plugins {{{
@@ -153,17 +151,8 @@ call plug#end()
 " }}}
 
 " Plugin Configuration {{{
-" Don't open a pane on YouCompleteMe autocompletion
-autocmd CompleteDone * pclose
-
-" Enable Rust formatting
-let g:rustfmt_autosave = 1
-
-" Enable airline (and stop it from erroring on PHP docblocks)
+" Enable airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#whitespace#mixed_indent_algo = 1
-
-" Enable Powerline fonts and Solarized theme (Airline)
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'nord'
 
@@ -172,30 +161,13 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_aggregate_errors = 1
 
-" PHP-specific Syntastic settings
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd', 'phplint']
-let g:syntastic_php_phpcs_args='--report=csv --standard=PSR2'
+" Enable Rust autoformatting
+let g:rustfmt_autosave = 1
 
 " JS-specific Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
 
-" Open fzf / the silver searcher
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>a :Ag<CR>
-nnoremap <Leader>r :Rg<CR>
-
-" Open / close NERDTree
-noremap <Leader>j :NERDTreeToggle<CR>
-
-" Open / close Tagbar
-noremap <Leader>k :TagbarToggle<CR>
-
-nnoremap <Leader>u :MundoToggle<CR>
-
-" Terraform fmt on save
-let g:terraform_fmt_on_save = 1
-
-" Setup wiki
+" Setup vimwiki
 let wiki = {}
 let wiki.path = '~/vimwiki/'
 let g:vimwiki_list = [wiki]
@@ -239,7 +211,7 @@ set laststatus=2
 " Turn off bell
 set vb t_vb=
 
-" Set color scheme to Nord
+" Set color scheme
 colorscheme nord
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -258,9 +230,6 @@ set foldmethod=indent
 
 " Only look for mode lines at end of file
 set modelines=1
-
-" Use space to show/hide folds
-nnoremap <Space> za
 " }}}
 
 " Swap, Backup, and Restore {{{
@@ -275,13 +244,13 @@ set undodir=~/.config/nvim/undo
 set undofile
 
 if !isdirectory($HOME . "/.config/nvim")
-	call mkdir($HOME . "/.config/nvim")
+    call mkdir($HOME . "/.config/nvim")
 endif
 if !isdirectory($HOME . "/.config/nvim/swp")
-	call mkdir($HOME . "/.config/nvim/swp", "", 0700)
+    call mkdir($HOME . "/.config/nvim/swp", "", 0700)
 endif
 if !isdirectory($HOME . "/.config/nvim/undo")
-	call mkdir($HOME . "/.config/nvim/undo", "", 0700)
+    call mkdir($HOME . "/.config/nvim/undo", "", 0700)
 endif
 
 " Restore place in file on open
@@ -289,16 +258,9 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 " }}}
 
 " Project-specific settings {{{
-" Duo ignores E501 (line too long)
-augroup DuoFlake8
-	autocmd!
-	autocmd BufEnter $HOME/src/Duo/* :let g:syntastic_python_flake8_args='--ignore=E501'
-	autocmd BufLeave $HOME/src/Duo/* :silent! unlet g:syntastic_python_flake8_args
-augroup END
-
 " Run py.test when saving Cardinal unit tests
 augroup RunPyTestCardinal
-	autocmd! BufWritePost $HOME/src/Cardinal/**/test_*.py :!py.test
+    autocmd! BufWritePost $HOME/src/Cardinal/**/test_*.py :!py.test
 augroup END
 " }}}
 
