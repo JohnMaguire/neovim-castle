@@ -156,9 +156,6 @@ call plug#end()
 " Don't open a pane on YouCompleteMe autocompletion
 autocmd CompleteDone * pclose
 
-" Use goimports instead of gofmt
-let g:go_fmt_command = "goimports"
-
 " Enable Rust formatting
 let g:rustfmt_autosave = 1
 
