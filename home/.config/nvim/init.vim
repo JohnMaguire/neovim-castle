@@ -211,12 +211,14 @@ set tabstop=4
 " Spaces inserted per tab
 set softtabstop=4
 
-" Don't expand tabs by default
-set noexpandtab
+" A level of indentation
+set shiftwidth=4
+
+" Expand tabs by default
+set expandtab
 
 " Smarter auto-indentation
-set smartindent
-set shiftwidth=4
+set autoindent
 " }}}
 
 " Visual Settings {{{
