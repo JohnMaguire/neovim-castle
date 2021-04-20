@@ -1,17 +1,26 @@
-" Bootstrapping {{{
-" Install vim-plug for neovim
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    silent !curl -fLo "$HOME/.config/nvim/autoload/plug.vim" --create-dirs
-      \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
+" Swap, Backup, and Restore {{{
+if !isdirectory($HOME . "/.vim")
+    call mkdir($HOME . "/.vim")
+endif
+if !isdirectory($HOME . "/.vim/swp")
+    call mkdir($HOME . "/.vim/swp", "", 0700)
+endif
+if !isdirectory($HOME . "/.vim/undo")
+    call mkdir($HOME . "/.vim/undo", "", 0700)
 endif
 
-" Install vim-plug for vim
-if empty(glob('~/.vim/autoload/plug.vim'))
-   silent !curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs
-     \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-   autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
+" Backups are for scrubs
+set nobackup
+
+" Move swap files out of project directory
+set directory=~/.vim/swp/
+
+" Save undo tree
+set undodir=~/.vim/undo
+set undofile
+
+" Restore place in file on open
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " }}}
 
 " Key Bindings & Movement {{{
@@ -67,8 +76,32 @@ noremap <Leader>k :TagbarToggle<CR>
 nnoremap <Leader>u :MundoToggle<CR>
 " }}}
 
+" Tab Settings {{{
+" Visual spaces per tab
+set tabstop=4
+
+" Spaces inserted per tab
+set softtabstop=4
+
+" A level of indentation
+set shiftwidth=4
+
+" Expand tabs by default
+set expandtab
+
+" Smarter auto-indentation
+set autoindent
+" }}}
+
 " Plugins {{{
-call plug#begin('~/.config/nvim/plugged')
+" Install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+   silent !curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs
+     \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+   autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
 
 " Housekeeping {{{
 " Start with some sensible defaults
@@ -176,23 +209,6 @@ let wiki.path = '~/vimwiki/'
 let g:vimwiki_list = [wiki]
 " }}}
 
-" Tab Settings {{{
-" Visual spaces per tab
-set tabstop=4
-
-" Spaces inserted per tab
-set softtabstop=4
-
-" A level of indentation
-set shiftwidth=4
-
-" Expand tabs by default
-set expandtab
-
-" Smarter auto-indentation
-set autoindent
-" }}}
-
 " Visual Settings {{{
 " Set the title of the window to reflect file being edited
 set title
@@ -233,31 +249,6 @@ set foldmethod=indent
 
 " Only look for mode lines at end of file
 set modelines=1
-" }}}
-
-" Swap, Backup, and Restore {{{
-" Backups are for scrubs
-set nobackup
-
-" Move swap files out of project directory
-set directory=~/.config/nvim/swp/
-
-" Save undo tree
-set undodir=~/.config/nvim/undo
-set undofile
-
-if !isdirectory($HOME . "/.config/nvim")
-    call mkdir($HOME . "/.config/nvim")
-endif
-if !isdirectory($HOME . "/.config/nvim/swp")
-    call mkdir($HOME . "/.config/nvim/swp", "", 0700)
-endif
-if !isdirectory($HOME . "/.config/nvim/undo")
-    call mkdir($HOME . "/.config/nvim/undo", "", 0700)
-endif
-
-" Restore place in file on open
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " }}}
 
 " Project-specific settings {{{
