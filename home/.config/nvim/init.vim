@@ -70,82 +70,85 @@ nnoremap <Leader>u :MundoToggle<CR>
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
+" Housekeeping {{{
 " Start with some sensible defaults
 Plug 'tpope/vim-sensible'
 
 " Fix some issues with tmux
 Plug 'tmux-plugins/vim-tmux-focus-events'
+" }}}
 
-" The best linter / syntax checker for vim
-Plug 'scrooloose/syntastic'
-
-" Vim wiki
-Plug 'vimwiki/vimwiki'
+" Utilities {{{
+" Better undo history tree
+Plug 'simnalamburt/vim-mundo'
 
 " FS tree
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
-" Undo history tree (better undo tree)
-Plug 'simnalamburt/vim-mundo'
 
 " fzf fuzzy file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Tag tree
+Plug 'majutsushi/tagbar'
+
+" UNIX shell commands (Move, Mkdir, etc.)
+Plug 'tpope/vim-eunuch'
+
+" Git commands (Gblame, Gcommit, Gmove, etc.)
+Plug 'tpope/vim-fugitive'
+
+" Vim wiki
+Plug 'vimwiki/vimwiki'
+
+" Github Gist
+Plug 'mattn/webapi-vim'
+Plug 'mattn/vim-gist'
+" }}}
+
+" Theming {{{
 " Solarized color scheme
 Plug 'altercation/vim-colors-solarized'
 
 " Nord color scheme
 Plug 'arcticicestudio/nord-vim'
 
-" Airline status bar, and solarized theme
+" Airline status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Git commands (Gblame, Gcommit, Gmove, etc.)
-Plug 'tpope/vim-fugitive'
-
 " Git markers next to line numbers
 Plug 'airblade/vim-gitgutter'
+" }}}
 
+" Language support {{{
+" The best linter / syntax checker for vim
+Plug 'scrooloose/syntastic'
+
+" Autocompletion
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
-" Gist support
-Plug 'mattn/webapi-vim'
-Plug 'mattn/vim-gist'
-
-" Show tags in file, ordered by scope
-Plug 'majutsushi/tagbar'
-
-" Golang settings
+" Golang
 Plug 'fatih/vim-go'
+
+" Python
+Plug 'python-mode/python-mode'
 
 " Rust
 Plug 'rust-lang/rust.vim'
-
-" TOML syntax highlighting
-Plug 'cespare/vim-toml'
-
-" Python indentation conforming to PEP-8
-Plug 'Vimjas/vim-python-pep8-indent'
-
-" tmux syntax hilighting
-Plug 'tmux-plugins/vim-tmux'
-
-" Updated PHP omnifunc
-Plug 'shawncplus/phpcomplete.vim'
 
 " Javascript syntax and indentation
 Plug 'pangloss/vim-javascript'
 
 " JSX syntax hilighting / indentation
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 
-" Use local eslint over globally installed package
-Plug 'mtscout6/syntastic-local-eslint.vim'
+" TOML syntax highlighting
+Plug 'cespare/vim-toml'
 
-" Terraform syntax highlighting / formatting
-Plug 'hashivim/vim-terraform'
+" tmux syntax hilighting
+Plug 'tmux-plugins/vim-tmux'
+" }}}
 
 call plug#end()
 " }}}
