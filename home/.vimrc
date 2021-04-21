@@ -169,7 +169,7 @@ Plug 'scrooloose/syntastic'
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 " Golang
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Python
 Plug 'python-mode/python-mode'
