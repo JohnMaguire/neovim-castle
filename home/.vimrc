@@ -68,6 +68,8 @@ xnoremap p "_dP
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>a :Ag<CR>
 nnoremap <Leader>r :Rg<CR>
+nnoremap <Leader>t :Tags<CR>
+nnoremap <Leader>glg :GFiles?<CR>
 
 " Open / close NERDTree
 noremap <Leader>j :NERDTreeToggle<CR>
