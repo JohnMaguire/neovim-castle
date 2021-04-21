@@ -15,6 +15,9 @@ set nobackup
 " Move swap files out of project directory
 set directory=~/.vim/swp/
 
+" Save swap file frequently for faster vim-signify updates
+set updatetime=100
+
 " Save undo tree
 set undodir=~/.vim/undo
 set undofile
@@ -151,7 +154,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Git markers next to line numbers
-Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 " }}}
 
 " Language support {{{
