@@ -175,7 +175,7 @@ Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' }
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 " Python
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Rust
 Plug 'rust-lang/rust.vim'
