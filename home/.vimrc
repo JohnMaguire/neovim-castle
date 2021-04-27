@@ -69,7 +69,10 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>a :Ag<CR>
 nnoremap <Leader>r :Rg<CR>
 nnoremap <Leader>t :Tags<CR>
-nnoremap <Leader>glg :GFiles?<CR>
+" Git commands
+nnoremap <Leader>gls :GFiles?<CR>
+nnoremap <Leader>glg :Commits<CR>
+nnoremap <Leader>gbl :BCommits<CR>
 
 " Open / close NERDTree
 noremap <Leader>j :NERDTreeToggle<CR>
