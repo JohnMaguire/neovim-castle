@@ -44,6 +44,9 @@ inoremap jk <Esc>
 " Use qq for recording and <Leader>q for playing macros
 nnoremap <Leader>q @q
 
+" Use <Leader>pp to turn paste mode on or off
+nnoremap <Leader>pp :set paste! paste?<CR>
+
 " Disable arrow keys
 noremap <Left> <nop>
 noremap <Right> <nop>
@@ -212,8 +215,7 @@ let g:rustfmt_autosave = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Setup vimwiki
-let wiki = {}
-let wiki.path = '~/vimwiki/'
+let wiki = {'path': '~/vimwiki'}
 let g:vimwiki_list = [wiki]
 
 " }}}
@@ -229,6 +231,9 @@ set number
 
 " Highlight current line
 set cursorline
+
+" Highlight search results
+set hlsearch
 
 " Turn off end of line wrapping
 set nowrap
