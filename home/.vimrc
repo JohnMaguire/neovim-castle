@@ -57,9 +57,9 @@ noremap <Down> <nop>
 noremap <expr> j v:count ? 'j' : 'gj'
 noremap <expr> k v:count ? 'k' : 'gk'
 
-" Super-H and Super-L (beginning / end of line)
-noremap H ^
-noremap L $
+" Trying to train myself out of old shortcuts...
+nnoremap H <nop>
+nnoremap L <nop>
 
 " Use space to show/hide folds
 nnoremap <Space> za
@@ -127,7 +127,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'simnalamburt/vim-mundo'
 
 " FS tree
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " fzf fuzzy file searching
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
