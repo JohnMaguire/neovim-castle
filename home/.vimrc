@@ -187,6 +187,9 @@ Plug 'pangloss/vim-javascript'
 " JSX syntax hilighting / indentation
 Plug 'maxmellon/vim-jsx-pretty'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " TOML syntax highlighting
 Plug 'cespare/vim-toml'
 
@@ -211,13 +214,15 @@ let g:syntastic_aggregate_errors = 1
 " Enable Rust autoformatting
 let g:rustfmt_autosave = 1
 
+" Enable Terraform autoformatting
+let g:terraform_fmt_on_save=1
+
 " JS-specific Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
 
 " Setup vimwiki
 let wiki = {'path': '~/vimwiki'}
 let g:vimwiki_list = [wiki]
-
 " }}}
 
 " Visual Settings {{{
