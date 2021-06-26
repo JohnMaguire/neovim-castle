@@ -183,11 +183,11 @@ Plug 'mhinz/vim-signify'
 " }}}
 
 " Language support {{{
-" The best linter / syntax checker for vim
-Plug 'scrooloose/syntastic'
+" Linting
+Plug 'dense-analysis/ale'
 
 " Autocompletion
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --rust-completer' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -226,23 +226,28 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'nord'
 
-" Syntastic settings
-let g:syntastic_check_on_wq = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_aggregate_errors = 1
-
 " Enable Rust autoformatting
 let g:rustfmt_autosave = 1
 
 " Enable Terraform autoformatting
 let g:terraform_fmt_on_save=1
 
-" JS-specific Syntastic settings
-let g:syntastic_javascript_checkers = ['eslint']
-
 " Setup vimwiki
 let wiki = {'path': '~/vimwiki'}
 let g:vimwiki_list = [wiki]
+
+" coc plugins
+let g:coc_global_extensions = [
+  \ 'coc-go',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-snippets',
+  \ 'coc-tsserver',
+  \ ]
+
+" coc-snippets keybindings
+imap <C-l> <Plug>(coc-snippets-expand)
+xmap <Leader>x <Plug>(coc-convert-snippet)
 " }}}
 
 " Visual Settings {{{
