@@ -61,6 +61,10 @@ noremap <expr> k v:count ? 'k' : 'gk'
 nnoremap H <nop>
 nnoremap L <nop>
 
+" Use Tab and Shift-Tab to cycle through completions
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " Use space to show/hide folds
 nnoremap <Space> za
 
@@ -150,21 +154,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/vim-gist'
 
 " Snippets
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" Using supertab to make UltiSnips & YouCompleteMe play nicely
-Plug 'ervandew/supertab'
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " }}}
 
 " Theming {{{
