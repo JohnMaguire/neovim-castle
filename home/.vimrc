@@ -190,6 +190,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Terraform
 Plug 'hashivim/vim-terraform'
 
+" Typescript syntax and indentation
+Plug 'leafgarland/typescript-vim'
+
 " TOML syntax highlighting
 Plug 'cespare/vim-toml'
 
