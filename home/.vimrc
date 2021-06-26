@@ -170,7 +170,7 @@ Plug 'mhinz/vim-signify'
 Plug 'scrooloose/syntastic'
 
 " Autocompletion
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --rust-completer' }
 
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
